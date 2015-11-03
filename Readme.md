@@ -1,6 +1,6 @@
 TeraSniffer and Damage Meter by Gothos.
 
-* Packet encryption code, the opcode file and the list of server IPs are from
+* Packet encryption code and the list of server IPs are from
 
   https://github.com/GoneUp/Tera_PacketViewer
 
@@ -14,7 +14,8 @@ TeraSniffer and Damage Meter by Gothos.
 
   Used a modified version of DataTools to extract the list from this dump.
 
-
 * TeraEmulator was very helpful for understanding the packet structures.
 
-  https://github.com/r4ymonf/TeraEmulator
+   https://github.com/r4ymonf/TeraEmulator
+
+* OpCodes dumped by GoneUp, Gothos, dezmen

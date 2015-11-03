@@ -1,57 +1,96 @@
-﻿using System;
+﻿// Copyright (c) Gothos
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace Tera.DamageMeter
 {
-    public partial class PlayerStatsControl : UserControl
+    public class PlayerStatsControl : Control
     {
-        public PlayerStatsControl()
+        public PlayerInfo PlayerInfo { get; set; }
+        public Color HighlightColor { get; set; }
+        public ClassIcons ClassIcons { get; set; }
+
+        private static float DrawStringRightToLeft(Graphics graphics, string s, Font font, Brush brush, float x, float y)
         {
-            InitializeComponent();
+            x -= graphics.MeasureString(s, font).Width;
+            graphics.DrawString(s, font, brush, x, y);
+            return x;
         }
 
-        public void Fetch(PlayerStats playerStats, long totalDamage)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            PlayerNameLabel.Text = playerStats.Name;
-            PlayerClassLabel.Text = playerStats.Class.ToString();
-            DamageLabel.Text = Helpers.FormatValue(playerStats.Dealt.Damage);
-            HealLabel.Text = Helpers.FormatValue(playerStats.Dealt.Heal);
-            InfoLabel.Text = string.Format("Critrate {0:f1}% Hits {1} Received {2}",
-                                           (playerStats.Dealt.Crits * 100.0 / playerStats.Dealt.Hits),
-                                           playerStats.Dealt.Hits,
-                                           Helpers.FormatValue(playerStats.Received.Damage));
-            DamagePercentLabel.Text = (playerStats.Dealt.Damage * 100.0 / totalDamage).ToString("f1") + "%";
+            var formatHelpers = FormatHelpers.Pretty;
+            var placeHolder = DamagePlaceHolders.FromPlayerInfo(PlayerInfo, formatHelpers);
 
+            var graphics = e.Graphics;
+            var rect = ClientRectangle;
 
-            HealLabel.Visible = playerStats.Dealt.Heal != 0;
-            DamageHealSeparator.Visible = HealLabel.Visible;
-
-            // Positioning
-            PlayerNameLabel.Left = PlayerClassLabel.Right;
-            DamagePercentLabel.Left = Width - 4 - DamagePercentLabel.Width;
-
-            int pos = Width - 4;
-            if (DamageLabel.Visible)
+            using (var backBrush = new SolidBrush(BackColor))
             {
-                pos -= DamageLabel.Width;
-                DamageLabel.Left = pos;
+                graphics.FillRectangle(backBrush, rect);
             }
-            if (DamageHealSeparator.Visible)
+
+            if (PlayerInfo == null)
+                return;
+
+            var highlightRect = new Rectangle(rect.Left, rect.Top, (int)Math.Round(rect.Width * PlayerInfo.DamageFraction), rect.Height);
+
+            using (var highlightBrush = new SolidBrush(HighlightColor))
             {
-                pos -= DamageHealSeparator.Width;
-                DamageHealSeparator.Left = pos;
+                graphics.FillRectangle(highlightBrush, highlightRect);
             }
-            if (HealLabel.Visible)
+
+            var iconWidth = (int)(rect.Height * 0.8);
+            graphics.DrawImage(ClassIcons.GetImage(PlayerInfo.Class), (iconWidth - ClassIcons.Size) / 2, (rect.Height - ClassIcons.Size) / 2);
+            var textRect = Rectangle.FromLTRB(rect.Left + iconWidth, rect.Top, rect.Right, rect.Bottom);
+
+            using (var bigFont = new Font(Font.FontFamily, (int)Math.Round(rect.Height * 0.34), GraphicsUnit.Pixel))
+            using (var smallFont = new Font(Font.FontFamily, (int)Math.Round(rect.Height * 0.25), GraphicsUnit.Pixel))
+            using (var textBrush = new SolidBrush(ForeColor))
             {
-                pos -= HealLabel.Width;
-                HealLabel.Left = pos;
+                var row1LeftText = placeHolder.Replace(Strings.PlayerBoxLeftLine1);
+                var row2RightText = placeHolder.Replace(Strings.PlayerBoxRightLine1);
+                var row2LeftText = placeHolder.Replace(Strings.PlayerBoxLeftLine2);
+                var row3LeftText = placeHolder.Replace(Strings.PlayerBoxLeftLine3);
+                var row3RightText = placeHolder.Replace(Strings.PlayerBoxRightLine3);
+
+                var row1Y = (float)Math.Round(textRect.Top + 0.00 * textRect.Height);
+                var row2Y = (float)Math.Round(textRect.Top + 0.36 * textRect.Height);
+                var row3Y = (float)Math.Round(textRect.Top + 0.64 * textRect.Height);
+
+                graphics.DrawString(row1LeftText, bigFont, textBrush, textRect.Left, row1Y);
+                graphics.DrawString(row2LeftText, smallFont, textBrush, textRect.Left, row2Y);
+                graphics.DrawString(row3LeftText, smallFont, textBrush, textRect.Left, row3Y);
+
+                float x = textRect.Right;
+                x = DrawStringRightToLeft(graphics, row2RightText, bigFont, textBrush, x, textRect.Top);
+
+                x = textRect.Right;
+                x = DrawStringRightToLeft(graphics, formatHelpers.FormatValue(PlayerInfo.Dealt.Damage), smallFont, Brushes.Red, x, row2Y);
+                if (PlayerInfo.Dealt.Heal != 0)
+                {
+                    x = DrawStringRightToLeft(graphics, "+", smallFont, textBrush, x, row2Y);
+                    x = DrawStringRightToLeft(graphics, formatHelpers.FormatValue(PlayerInfo.Dealt.Heal), smallFont, Brushes.LawnGreen, x, row2Y);
+                }
+
+                x = textRect.Right;
+                x = DrawStringRightToLeft(graphics, row3RightText, smallFont, textBrush, x, row3Y);
             }
+        }
+
+        public PlayerStatsControl()
+        {
+            DoubleBuffered = true;
+
+            HighlightColor = Color.RoyalBlue;
+            BackColor = Color.Navy;
+            ForeColor = Color.White;
         }
     }
 }

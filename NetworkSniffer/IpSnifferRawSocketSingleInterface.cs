@@ -1,10 +1,16 @@
-﻿using System;
+﻿// Copyright (c) CodesInChaos
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
 namespace NetworkSniffer
 {
+    // Doesn't work since Microsoft crippled raw sockets on the Desktop variants of Windows.
+    // In particular it doesn't receive incoming TCP packets
+    // Might work on Server variants of Windows, but I didn't test that
     public class IpSnifferRawSocketSingleInterface : IpSniffer
     {
         private Socket _socket;
