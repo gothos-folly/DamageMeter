@@ -12,6 +12,9 @@ namespace Tera.Game.Messages
         {
             reader.Skip(6);
             Id = reader.ReadEntityId();
+            reader.Skip(67);
+            OwnerId = reader.ReadEntityId();
         }
+        public EntityId OwnerId { get; }
     }
 }
