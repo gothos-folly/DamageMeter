@@ -39,19 +39,7 @@ namespace Tera.Game
         {
             Entity entity;
             _dictionary.TryGetValue(id, out entity);
-            //try to find Thrall of Vengeance owner
-            Type asd = entity.GetType();
-            if (asd.FullName == "Tera.Game.NpcEntity")
-            {
-                NpcEntity thrall = (NpcEntity)entity;
-                if (thrall.Owner != null)
-                    return thrall.Owner;
-                else
-                    return entity;
-            } 
-            else
-            //try to find Thrall of Vengeance owner
-                return entity;
+            return entity;
         }
 
         public Entity GetOrPlaceholder(EntityId id)
