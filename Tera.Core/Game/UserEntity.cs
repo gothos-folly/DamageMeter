@@ -44,9 +44,11 @@ namespace Tera.Game
         public static UserEntity ForEntity(Entity entity)
         {
             var ownedEntity = entity as IHasOwner;
-            if (ownedEntity != null && ownedEntity.Owner != null)
+            while (ownedEntity != null && ownedEntity.Owner != null)
+            {
                 entity = ownedEntity.Owner;
-
+                ownedEntity = entity as IHasOwner;
+            }
             return entity as UserEntity;
         }
     }

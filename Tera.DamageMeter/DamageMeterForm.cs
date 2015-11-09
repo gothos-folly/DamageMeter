@@ -39,8 +39,7 @@ namespace Tera.DamageMeter
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Logger.Clear();
-            Logger.Log("Starting...");
+            Logger.Log("Form created");
             _settings = Settings.Load();
             Logger.Log("Settings loaded");
             _classIcons = new ClassIcons(_basicTeraData.ResourceDirectory + @"class-icons\", 36);
@@ -56,7 +55,7 @@ namespace Tera.DamageMeter
             _teraSniffer.NewConnection += server => InvokeAction(() => HandleNewConnection(server));
             _teraSniffer.Warning += LogWarning;
             _teraSniffer.BufferSize = _settings.BufferSize;
-            Logger.Log(string.Format("Setting buffer size to {0}B", FormatHelpers.Invariant.FormatValue(_settings.BufferSize)??"Default"));
+            Logger.Log(string.Format("Setting buffer size to {0}B", FormatHelpers.Invariant.FormatValue(_settings.BufferSize) ?? "Default"));
             SettingsChanged();
 
             StartSniffing();
@@ -237,7 +236,7 @@ namespace Tera.DamageMeter
 
             var log = new PacketLogFile(OpenPacketLogFileDialog.FileName);
 
-            var server = new Server(string.Format("[{0}] Packet Log", log.Header.Region), log.Header.Region, null);
+            var server = new Server(string.Format("[{0}] Packet Log", log.Header.Region), log.Header.Region ?? "EU", null);
             HandleNewConnection(server);
 
             foreach (var message in log.Messages)

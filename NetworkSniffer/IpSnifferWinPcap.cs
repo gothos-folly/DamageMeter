@@ -18,7 +18,6 @@ namespace NetworkSniffer
         private WinPcapDeviceList _devices;
         private volatile uint _droppedPackets;
         private volatile uint _interfaceDroppedPackets;
-        private int _bufferSize;
 
         public IpSnifferWinPcap(string filter)
         {
