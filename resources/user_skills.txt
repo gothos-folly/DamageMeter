@@ -2189,3 +2189,356 @@
 330800 Common Common Warrior Smoke Flanker VIII
 330900 Common Common Warrior Smoke Flanker IX
 340100 Common Common Warrior Binding Sword
+10100 Common Common Brawler Punch I		
+10101 Common Common Brawler Punch I		
+10102 Common Common Brawler Punch I		
+10103 Common Common Brawler Punch I		
+10200 Common Common Brawler Punch II		
+10201 Common Common Brawler Punch II		
+10202 Common Common Brawler Punch II		
+10203 Common Common Brawler Punch II		
+10300 Common Common Brawler Punch III		
+10301 Common Common Brawler Punch III		
+10302 Common Common Brawler Punch III		
+10303 Common Common Brawler Punch III		
+10400 Common Common Brawler Punch IV		
+10401 Common Common Brawler Punch IV		
+10402 Common Common Brawler Punch IV		
+10403 Common Common Brawler Punch IV		
+10500 Common Common Brawler Punch V		
+10501 Common Common Brawler Punch V		
+10502 Common Common Brawler Punch V		
+10503 Common Common Brawler Punch V		
+10600 Common Common Brawler Punch VI		
+10601 Common Common Brawler Punch VI		
+10602 Common Common Brawler Punch VI		
+10603 Common Common Brawler Punch VI		
+10700 Common Common Brawler Punch VII		
+10701 Common Common Brawler Punch VII		
+10702 Common Common Brawler Punch VII		
+10703 Common Common Brawler Punch VII		
+10800 Common Common Brawler Punch VIII		
+10801 Common Common Brawler Punch VIII		
+10802 Common Common Brawler Punch VIII		
+10803 Common Common Brawler Punch VIII		
+10900 Common Common Brawler Punch IX		
+10901 Common Common Brawler Punch IX		
+10902 Common Common Brawler Punch IX		
+10903 Common Common Brawler Punch IX		
+11000 Common Common Brawler Punch X		
+11001 Common Common Brawler Punch X		
+11002 Common Common Brawler Punch X		
+11003 Common Common Brawler Punch X		
+11100 Common Common Brawler Punch XI		
+11101 Common Common Brawler Punch XI		
+11102 Common Common Brawler Punch XI		
+11103 Common Common Brawler Punch XI		
+11200 Common Common Brawler Punch XII		
+11201 Common Common Brawler Punch XII		
+11202 Common Common Brawler Punch XII		
+11203 Common Common Brawler Punch XII		
+20100 Common Common Brawler Counter I		
+20101 Common Common Brawler Counter I		
+20102 Common Common Brawler Counter I		
+20103 Common Common Brawler Counter I		
+20104 Common Common Brawler Counter I		
+20200 Common Common Brawler Counter II		
+20201 Common Common Brawler Counter II		
+20202 Common Common Brawler Counter II		
+20203 Common Common Brawler Counter II		
+20204 Common Common Brawler Counter II		
+20300 Common Common Brawler Counter III		
+20301 Common Common Brawler Counter III		
+20302 Common Common Brawler Counter III		
+20303 Common Common Brawler Counter III		
+20304 Common Common Brawler Counter III		
+20400 Common Common Brawler Counter IV		
+20401 Common Common Brawler Counter IV		
+20402 Common Common Brawler Counter IV		
+20403 Common Common Brawler Counter IV		
+20404 Common Common Brawler Counter IV		
+20500 Common Common Brawler Counter V		
+20501 Common Common Brawler Counter V		
+20502 Common Common Brawler Counter V		
+20503 Common Common Brawler Counter V		
+20504 Common Common Brawler Counter V		
+20600 Common Common Brawler Counter VI		
+20601 Common Common Brawler Counter VI		
+20602 Common Common Brawler Counter VI		
+20603 Common Common Brawler Counter VI		
+20604 Common Common Brawler Counter VI		
+20700 Common Common Brawler Counter VII		
+20701 Common Common Brawler Counter VII		
+20702 Common Common Brawler Counter VII		
+20703 Common Common Brawler Counter VII		
+20704 Common Common Brawler Counter VII		
+20800 Common Common Brawler Counter VIII		
+20801 Common Common Brawler Counter VIII		
+20802 Common Common Brawler Counter VIII		
+20803 Common Common Brawler Counter VIII		
+20804 Common Common Brawler Counter VIII		
+20900 Common Common Brawler Counter IX		
+20901 Common Common Brawler Counter IX		
+20902 Common Common Brawler Counter IX		
+20903 Common Common Brawler Counter IX		
+20904 Common Common Brawler Counter IX		
+21000 Common Common Brawler Counter X		
+21001 Common Common Brawler Counter X		
+21002 Common Common Brawler Counter X		
+21003 Common Common Brawler Counter X		
+21004 Common Common Brawler Counter X		
+21100 Common Common Brawler Counter XI		
+21101 Common Common Brawler Counter XI		
+21102 Common Common Brawler Counter XI		
+21103 Common Common Brawler Counter XI		
+21104 Common Common Brawler Counter XI		
+21200 Common Common Brawler Counter XII		
+21201 Common Common Brawler Counter XII		
+21202 Common Common Brawler Counter XII		
+21203 Common Common Brawler Counter XII		
+21204 Common Common Brawler Counter XII		
+30100 Common Common Brawler Divine Wrath I		
+30200 Common Common Brawler Divine Wrath II		
+40100 Common Common Brawler Ground Pounder I		
+40200 Common Common Brawler Ground Pounder II		
+40300 Common Common Brawler Ground Pounder III		
+40400 Common Common Brawler Ground Pounder IV		
+40500 Common Common Brawler Ground Pounder V		
+40600 Common Common Brawler Ground Pounder VI		
+40700 Common Common Brawler Ground Pounder VII		
+40800 Common Common Brawler Ground Pounder VIII		
+40900 Common Common Brawler Ground Pounder IX		
+41000 Common Common Brawler Ground Pounder X		
+50100 Common Common Brawler Bull Rush I		
+50200 Common Common Brawler Bull Rush II		
+50300 Common Common Brawler Bull Rush III		
+50400 Common Common Brawler Bull Rush IV		
+50500 Common Common Brawler Bull Rush V		
+50600 Common Common Brawler Bull Rush VI		
+50700 Common Common Brawler Bull Rush VII		
+50800 Common Common Brawler Bull Rush VIII		
+50900 Common Common Brawler Bull Rush IX		
+60100 Common Common Brawler Haymaker I		
+60101 Common Common Brawler Haymaker I		
+60102 Common Common Brawler Haymaker I		
+60130 Common Common Brawler Haymaker I		
+60200 Common Common Brawler Haymaker II		
+60201 Common Common Brawler Haymaker II		
+60202 Common Common Brawler Haymaker II		
+60230 Common Common Brawler Haymaker II		
+60300 Common Common Brawler Haymaker III		
+60301 Common Common Brawler Haymaker III		
+60302 Common Common Brawler Haymaker III		
+60330 Common Common Brawler Haymaker III		
+60400 Common Common Brawler Haymaker IV		
+60401 Common Common Brawler Haymaker IV		
+60402 Common Common Brawler Haymaker IV		
+60430 Common Common Brawler Haymaker IV		
+60500 Common Common Brawler Haymaker V		
+60501 Common Common Brawler Haymaker V		
+60502 Common Common Brawler Haymaker V		
+60530 Common Common Brawler Haymaker V		
+60600 Common Common Brawler Haymaker VI		
+60601 Common Common Brawler Haymaker VI		
+60602 Common Common Brawler Haymaker VI		
+60630 Common Common Brawler Haymaker VI		
+60700 Common Common Brawler Haymaker VII		
+60701 Common Common Brawler Haymaker VII		
+60702 Common Common Brawler Haymaker VII		
+60730 Common Common Brawler Haymaker VII		
+60800 Common Common Brawler Haymaker VIII		
+60801 Common Common Brawler Haymaker VIII		
+60802 Common Common Brawler Haymaker VIII		
+60830 Common Common Brawler Haymaker VIII		
+60900 Common Common Brawler Haymaker IX		
+60901 Common Common Brawler Haymaker IX		
+60902 Common Common Brawler Haymaker IX		
+60930 Common Common Brawler Haymaker IX		
+61000 Common Common Brawler Haymaker X		
+61001 Common Common Brawler Haymaker X		
+61002 Common Common Brawler Haymaker X		
+61030 Common Common Brawler Haymaker X		
+61100 Common Common Brawler Haymaker XI		
+61101 Common Common Brawler Haymaker XI		
+61102 Common Common Brawler Haymaker XI		
+61130 Common Common Brawler Haymaker XI		
+70100 Common Common Brawler Roundhouse Kick I		
+70130 Common Common Brawler Roundhouse Kick I		
+70200 Common Common Brawler Roundhouse Kick II		
+70230 Common Common Brawler Roundhouse Kick II		
+70300 Common Common Brawler Roundhouse Kick III		
+70330 Common Common Brawler Roundhouse Kick III		
+70400 Common Common Brawler Roundhouse Kick IV		
+70430 Common Common Brawler Roundhouse Kick IV		
+70500 Common Common Brawler Roundhouse Kick V		
+70530 Common Common Brawler Roundhouse Kick V		
+70600 Common Common Brawler Roundhouse Kick VI		
+70630 Common Common Brawler Roundhouse Kick VI		
+70700 Common Common Brawler Roundhouse Kick VII		
+70730 Common Common Brawler Roundhouse Kick VII		
+70800 Common Common Brawler Roundhouse Kick VIII		
+70830 Common Common Brawler Roundhouse Kick VIII		
+70900 Common Common Brawler Roundhouse Kick IX		
+70930 Common Common Brawler Roundhouse Kick IX		
+71000 Common Common Brawler Roundhouse Kick X		
+71030 Common Common Brawler Roundhouse Kick X		
+71100 Common Common Brawler Roundhouse Kick XI		
+71130 Common Common Brawler Roundhouse Kick XI		
+71200 Common Common Brawler Roundhouse Kick XII		
+71230 Common Common Brawler Roundhouse Kick XII		
+80100 Common Common Brawler Piledriver I		
+80101 Common Common Brawler Piledriver I		
+80102 Common Common Brawler Piledriver I		
+80130 Common Common Brawler Piledriver I		
+80200 Common Common Brawler Piledriver II		
+80201 Common Common Brawler Piledriver II		
+80202 Common Common Brawler Piledriver II		
+80230 Common Common Brawler Piledriver II		
+80300 Common Common Brawler Piledriver III		
+80301 Common Common Brawler Piledriver III		
+80302 Common Common Brawler Piledriver III		
+80330 Common Common Brawler Piledriver III		
+80400 Common Common Brawler Piledriver IV		
+80401 Common Common Brawler Piledriver IV		
+80402 Common Common Brawler Piledriver IV		
+80430 Common Common Brawler Piledriver IV		
+80500 Common Common Brawler Piledriver V		
+80501 Common Common Brawler Piledriver V		
+80502 Common Common Brawler Piledriver V		
+80530 Common Common Brawler Piledriver V		
+80600 Common Common Brawler Piledriver VI		
+80601 Common Common Brawler Piledriver VI		
+80602 Common Common Brawler Piledriver VI		
+80630 Common Common Brawler Piledriver VI		
+80700 Common Common Brawler Piledriver VII		
+80701 Common Common Brawler Piledriver VII		
+80702 Common Common Brawler Piledriver VII		
+80730 Common Common Brawler Piledriver VII		
+80800 Common Common Brawler Piledriver VIII		
+80801 Common Common Brawler Piledriver VIII		
+80802 Common Common Brawler Piledriver VIII		
+80830 Common Common Brawler Piledriver VIII		
+80900 Common Common Brawler Piledriver IX		
+80901 Common Common Brawler Piledriver IX		
+80902 Common Common Brawler Piledriver IX		
+80930 Common Common Brawler Piledriver IX		
+81000 Common Common Brawler Piledriver X		
+81001 Common Common Brawler Piledriver X		
+81002 Common Common Brawler Piledriver X		
+81030 Common Common Brawler Piledriver X		
+81100 Common Common Brawler Piledriver XI		
+81101 Common Common Brawler Piledriver XI		
+81102 Common Common Brawler Piledriver XI		
+81130 Common Common Brawler Piledriver XI		
+90100 Common Common Brawler Jackhammer I		
+90101 Common Common Brawler Jackhammer I		
+90102 Common Common Brawler Jackhammer I		
+90130 Common Common Brawler Jackhammer I		
+90200 Common Common Brawler Jackhammer II		
+90201 Common Common Brawler Jackhammer II		
+90202 Common Common Brawler Jackhammer II		
+90230 Common Common Brawler Jackhammer II		
+90300 Common Common Brawler Jackhammer III		
+90301 Common Common Brawler Jackhammer III		
+90302 Common Common Brawler Jackhammer III		
+90330 Common Common Brawler Jackhammer III		
+90400 Common Common Brawler Jackhammer IV		
+90401 Common Common Brawler Jackhammer IV		
+90402 Common Common Brawler Jackhammer IV		
+90430 Common Common Brawler Jackhammer IV		
+90500 Common Common Brawler Jackhammer V		
+90501 Common Common Brawler Jackhammer V		
+90502 Common Common Brawler Jackhammer V		
+90530 Common Common Brawler Jackhammer V		
+90600 Common Common Brawler Jackhammer VI		
+90601 Common Common Brawler Jackhammer VI		
+90602 Common Common Brawler Jackhammer VI		
+90630 Common Common Brawler Jackhammer VI		
+90700 Common Common Brawler Jackhammer VII		
+90701 Common Common Brawler Jackhammer VII		
+90702 Common Common Brawler Jackhammer VII		
+90730 Common Common Brawler Jackhammer VII		
+90800 Common Common Brawler Jackhammer VIII		
+90801 Common Common Brawler Jackhammer VIII		
+90802 Common Common Brawler Jackhammer VIII		
+90830 Common Common Brawler Jackhammer VIII		
+90900 Common Common Brawler Jackhammer IX		
+90901 Common Common Brawler Jackhammer IX		
+90902 Common Common Brawler Jackhammer IX		
+90930 Common Common Brawler Jackhammer IX		
+91000 Common Common Brawler Jackhammer X		
+91001 Common Common Brawler Jackhammer X		
+91002 Common Common Brawler Jackhammer X		
+91030 Common Common Brawler Jackhammer X		
+91100 Common Common Brawler Jackhammer XI		
+91101 Common Common Brawler Jackhammer XI		
+91102 Common Common Brawler Jackhammer XI		
+91130 Common Common Brawler Jackhammer XI		
+100100 Common Common Brawler Counterpunch I		
+100200 Common Common Brawler Counterpunch II		
+100300 Common Common Brawler Counterpunch III		
+100400 Common Common Brawler Counterpunch IV		
+100500 Common Common Brawler Counterpunch V		
+100600 Common Common Brawler Counterpunch VI		
+100700 Common Common Brawler Counterpunch VII		
+100800 Common Common Brawler Counterpunch VIII		
+100900 Common Common Brawler Counterpunch IX		
+120100 Common Common Brawler Retaliate I		
+120200 Common Common Brawler Retaliate II		
+120300 Common Common Brawler Retaliate III		
+120400 Common Common Brawler Retaliate IV		
+120500 Common Common Brawler Retaliate V		
+120600 Common Common Brawler Retaliate VI		
+120700 Common Common Brawler Retaliate VII		
+120800 Common Common Brawler Retaliate VIII		
+120900 Common Common Brawler Retaliate IX		
+121000 Common Common Brawler Retaliate X		
+130100 Common Common Brawler Provoke I		
+130200 Common Common Brawler Provoke II		
+130300 Common Common Brawler Provoke III		
+130400 Common Common Brawler Provoke IV		
+130500 Common Common Brawler Provoke V		
+130600 Common Common Brawler Provoke VI		
+130700 Common Common Brawler Provoke VII		
+130800 Common Common Brawler Provoke VIII		
+130900 Common Common Brawler Provoke XI		
+140100 Common Common Brawler Infuriate		
+150100 Common Common Brawler High Kick I		
+150200 Common Common Brawler High Kick II		
+150300 Common Common Brawler High Kick III		
+150400 Common Common Brawler High Kick IV		
+150500 Common Common Brawler High Kick V		
+150600 Common Common Brawler High Kick VI		
+150700 Common Common Brawler High Kick VII		
+150800 Common Common Brawler High Kick VIII		
+150900 Common Common Brawler High Kick IX		
+151000 Common Common Brawler High Kick X		
+160100 Common Common Brawler Flip Kick I		
+160200 Common Common Brawler Flip Kick II		
+160300 Common Common Brawler Flip Kick III		
+160400 Common Common Brawler Flip Kick IV		
+160500 Common Common Brawler Flip Kick V		
+170100 Common Common Brawler Rampage I		
+170200 Common Common Brawler Rampage II		
+170300 Common Common Brawler Rampage III		
+170400 Common Common Brawler Rampage IV		
+170500 Common Common Brawler Rampage V		
+170600 Common Common Brawler Rampage VI		
+170700 Common Common Brawler Rampage VII		
+170800 Common Common Brawler Rampage VIII		
+170900 Common Common Brawler Rampage IX		
+171000 Common Common Brawler Rampage X		
+180100 Common Common Brawler Growing Fury		
+190100 Common Common Brawler Invigorating Rage		
+200100 Common Common Brawler Meat Grinder I		
+200200 Common Common Brawler Meat Grinder II		
+200300 Common Common Brawler Meat Grinder III		
+200400 Common Common Brawler Meat Grinder IV		
+200500 Common Common Brawler Meat Grinder V		
+200600 Common Common Brawler Meat Grinder VI		
+200700 Common Common Brawler Meat Grinder VII		
+200800 Common Common Brawler Meat Grinder VIII		
+200900 Common Common Brawler Meat Grinder IX		
+201000 Common Common Brawler Meat Grinder X		
+210100 Common Common Brawler Mounting Rage		
+400100 Common Common Brawler Quick Dash		
