@@ -76,6 +76,10 @@ namespace Tera.DamageMeter
             if (message.Amount == 0)
                 return result;
 
+            /// Fix counting self-damage, such as Death from above & Command: Self-destruct
+            if ((UserEntity.ForEntity(message.Source) == UserEntity.ForEntity(message.Target)) && (message.Damage > 0)) 
+	            return result;
+
             result.Damage = message.Damage;
             result.Heal = message.Heal;
             result.Hits++;
