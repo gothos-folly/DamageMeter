@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -16,11 +17,16 @@ namespace NetworkSniffer
         private Socket _socket;
         private readonly IPAddress _localIp;
         private readonly byte[] _buffer;
+        public bool _isInit { get; private set; }
 
         public IpSnifferRawSocketSingleInterface(IPAddress localIp)
         {
             _localIp = localIp;
-            _buffer = new byte[1024 * 64];
+            _buffer = new byte[BufferSize == null ? (1 << 19) : (BufferSize.Value<<1)];
+        }
+        public override IEnumerable<string> Status()
+        {
+            return new string[] { string.Format("Raw {0} {1}", ToString(), _isInit ? "Started" : "Closed") };
         }
 
         private void Init()
@@ -32,11 +38,16 @@ namespace NetworkSniffer
             _socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.HeaderIncluded, true);
             var receiveAllOn = BitConverter.GetBytes(1);
             _socket.IOControl(IOControlCode.ReceiveAll, receiveAllOn, null);
+            _socket.ReceiveBufferSize = BufferSize==null?(1 << 18):BufferSize.Value;
             Read();
         }
 
         private void Finish()
         {
+            if (!_isInit)
+            {
+                return;
+            }
             Debug.Assert(_socket != null);
             _socket.Close();
             _socket = null;
@@ -49,10 +60,11 @@ namespace NetworkSniffer
 
         private void Receive(IAsyncResult ar)
         {
-            if (!Enabled)
-                return;
+            int count = 0;
+            if (!Enabled) return;
             var socket = (Socket)ar.AsyncState;
-            int count = socket.EndReceive(ar);
+            try { count = socket.EndReceive(ar);}
+            catch { return; };//async operation on disposed socket on exit
             OnPacketReceived(new ArraySegment<byte>(_buffer, 0, count));
             Read();
         }
@@ -60,7 +72,17 @@ namespace NetworkSniffer
         protected override void SetEnabled(bool value)
         {
             if (value)
-                Init();
+            {
+                try
+                {
+                    Init();
+                    _isInit = true;
+                }
+                catch
+                {
+                    // ignored ip addresses that cannot be binded, due to "disconnect network cable" state or other causes.
+                }
+            }
             else
                 Finish();
         }

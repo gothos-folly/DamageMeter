@@ -21,6 +21,9 @@ namespace Tera.DamageMeter
 
         public HotKeySettings HotKeys { get; private set; }
         public bool AlwaysOnTop { get; set; }
+        public bool OnlyBosses { get; set; }
+        public bool IgnoreOneshots { get; set; }
+        public bool UseRaw { get; set; }
         public double Opacity { get; set; }
         public int? BufferSize { get; set; }
 
@@ -31,6 +34,9 @@ namespace Tera.DamageMeter
             HotKeys = new HotKeySettings();
             HotKeys.PasteStats = "Control+Shift+V";
             Opacity = 1.0;
+            OnlyBosses = false;
+            IgnoreOneshots = true;
+            UseRaw = false;
         }
 
         public static Settings Load()

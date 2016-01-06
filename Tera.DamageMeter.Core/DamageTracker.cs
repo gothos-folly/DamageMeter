@@ -6,12 +6,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Tera.Game;
+using Tera.DamageMeter;
 using Tera.Game.Messages;
 
 namespace Tera.DamageMeter
 {
     public class DamageTracker : IEnumerable<PlayerInfo>
     {
+        public bool OnlyBosses { get; set; }
+        public bool IgnoreOneshots { get; set; }
         readonly Dictionary<Player, PlayerInfo> _statsByUser = new Dictionary<Player, PlayerInfo>();
         public DateTime? FirstAttack { get; private set; }
         public DateTime? LastAttack { get; private set; }
@@ -25,10 +28,12 @@ namespace Tera.DamageMeter
 
         }
 
-        public DamageTracker()
+        public DamageTracker(bool onlyboss,bool ignoreoneshots)
         {
             TotalDealt = new SkillStats();
             TotalReceived = new SkillStats();
+            OnlyBosses = onlyboss;
+            IgnoreOneshots = ignoreoneshots;
         }
 
         private PlayerInfo GetOrCreate(Player player)
@@ -75,6 +80,20 @@ namespace Tera.DamageMeter
             var result = new SkillStats();
             if (message.Amount == 0)
                 return result;
+
+            /// Fix counting self-damage, such as Death from above & Command: Self-destruct 
+            if ((message.Source.RootOwner == message.Target.RootOwner) && (message.Damage > 0))
+                return result;
+
+            NpcEntity npctarget = message.Target as NpcEntity;
+            if (npctarget != null) { 
+                if (OnlyBosses)       /// not count bosses
+                    if (!npctarget.Info.Boss)
+                        return result;
+                if (IgnoreOneshots)    /// ignore damage that is more than 10x times than mob's hp
+                    if ((npctarget.Info.HP > 0) && (npctarget.Info.HP <= message.Damage/10))
+                        return result;
+            }
 
             result.Damage = message.Damage;
             result.Heal = message.Heal;

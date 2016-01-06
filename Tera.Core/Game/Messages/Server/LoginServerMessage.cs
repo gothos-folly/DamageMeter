@@ -20,7 +20,29 @@ namespace Tera.Game.Messages
             Id = reader.ReadEntityId();
             reader.Skip(4);
             PlayerId = reader.ReadUInt32();
-            reader.Skip(272);
+
+            //reader.Skip(260);
+            //This network message doesn't have a fixed size between different region
+
+            reader.Skip(220);
+
+            var nameFirstBit = false;
+            while (true)
+            {
+                var b = reader.ReadByte();
+                if (b == 0x80)
+                {
+                    nameFirstBit = true;
+                    continue;
+                }
+                if (b == 0x3F && nameFirstBit)
+                {
+                    break;
+                }
+                nameFirstBit = false;
+            }
+
+            reader.Skip(9);
             Name = reader.ReadTeraString();
         }
     }
