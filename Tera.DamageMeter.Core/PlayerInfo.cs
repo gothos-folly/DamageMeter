@@ -17,7 +17,7 @@ namespace Tera.DamageMeter
         public SkillStats Received { get; private set; }
         public SkillStats Dealt { get; private set; }
 
-        public double DamageFraction { get { return (double)Dealt.Damage / _tracker.TotalDealt.Damage; } }
+        public double DamageFraction { get { return (_tracker.TotalDealt.Damage == 0) ? 0: (double) Dealt.Damage / _tracker.TotalDealt.Damage; } }
         public long? Dps { get { return _tracker.Dps(Dealt.Damage); } }
 
         public PlayerInfo(Player user, DamageTracker tracker)

@@ -24,12 +24,10 @@ namespace NetworkSniffer
             _filter = filter;
         }
 
-        public IEnumerable<string> Status()
+        public override IEnumerable<string> Status()
         {
             return _devices.Select(device => string.Format("Device {0} {1} {2}\r\n{3}", device.LinkType, device.Opened ? "Open" : "Closed", device.LastError, device));
         }
-
-        public int? BufferSize { get; set; }
 
         protected override void SetEnabled(bool value)
         {

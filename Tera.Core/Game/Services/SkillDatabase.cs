@@ -14,16 +14,22 @@ namespace Tera.Game
     {
         private readonly Dictionary<RaceGenderClass, Dictionary<int, UserSkillInfo>> _userSkilldata = new Dictionary<RaceGenderClass, Dictionary<int, UserSkillInfo>>();
 
-        public SkillDatabase(string filename)
+        public SkillDatabase(string directory, string reg_lang)
         {
+            InitializeSkillDatabase(Path.Combine(directory, $"skills\\skills-override-{reg_lang}.tsv"));
+            InitializeSkillDatabase(Path.Combine(directory, $"skills\\skills-{reg_lang}.tsv"));
+        }
+        private void InitializeSkillDatabase(string filename)
+        { 
             var lines = File.ReadLines(filename);
-            var listOfParts = lines.Select(s => s.Split(new[] { ' ' }, 5));
+            var listOfParts = lines.Select(s => s.Split(new[] { '\t' }, 7));
             foreach (var parts in listOfParts)
             {
-                var skill = new UserSkillInfo(int.Parse(parts[0]), new RaceGenderClass(parts[1], parts[2], parts[3]), parts[4]);
+                var skill = new UserSkillInfo(int.Parse(parts[0]), new RaceGenderClass(parts[1], parts[2], parts[3]), parts[4], parts[5] != "" && bool.Parse(parts[5]), parts[6]);
                 if (!_userSkilldata.ContainsKey(skill.RaceGenderClass))
                     _userSkilldata[skill.RaceGenderClass] = new Dictionary<int, UserSkillInfo>();
-                _userSkilldata[skill.RaceGenderClass].Add(skill.Id, skill);
+                if (!_userSkilldata[skill.RaceGenderClass].ContainsKey(skill.Id))
+                    _userSkilldata[skill.RaceGenderClass].Add(skill.Id, skill);
             }
         }
 

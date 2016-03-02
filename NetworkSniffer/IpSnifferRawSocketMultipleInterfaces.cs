@@ -28,7 +28,7 @@ namespace NetworkSniffer
         {
             get
             {
-                return AllInterfaceIPs.Where(x => x.ToString() != "127.0.0.1");
+                return AllInterfaceIPs;//local interface needed to capture game via proxy software like wowping
             }
         }
 
@@ -43,6 +43,11 @@ namespace NetworkSniffer
         }
 
         readonly List<IpSnifferRawSocketSingleInterface> _individualSniffers = new List<IpSnifferRawSocketSingleInterface>();
+
+        public override IEnumerable<string> Status()
+        {
+            return _individualSniffers.Select(ip => string.Format("Raw {0} {1}", ip.ToString(), ip._isInit ? "Started" : "Closed"));
+        }
 
         protected override void SetEnabled(bool value)
         {

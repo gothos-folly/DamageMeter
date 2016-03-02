@@ -15,7 +15,8 @@ namespace Tera.Data
     {
         public string ResourceDirectory { get; private set; }
         public IEnumerable<Server> Servers { get; private set; }
-        public IEnumerable<Region> Regions { get;private set; }
+//        public IEnumerable<Region> Regions { get;private set; }
+        public string Language { get; private set; }
         private readonly Func<string, TeraData> _dataForRegion;
 
         public TeraData DataForRegion(string region)
@@ -23,17 +24,18 @@ namespace Tera.Data
             return _dataForRegion(region);
         }
 
-        public BasicTeraData()
-            : this(FindResourceDirectory())
+        public BasicTeraData(string language="Auto")
+            : this(FindResourceDirectory(),language)
         {
         }
 
-        public BasicTeraData(string resourceDirectory)
+        public BasicTeraData(string resourceDirectory,string language)
         {
             ResourceDirectory = resourceDirectory;
+            Language = language;
             _dataForRegion = Helpers.Memoize<string, TeraData>(region => new TeraData(this, region));
             Servers = GetServers(Path.Combine(ResourceDirectory, "servers.txt")).ToList();
-            Regions = GetRegions(Path.Combine(ResourceDirectory, "regions.txt")).ToList();
+//            Regions = GetRegions(Path.Combine(ResourceDirectory, "regions.txt")).ToList();
         }
 
         private static string FindResourceDirectory()
