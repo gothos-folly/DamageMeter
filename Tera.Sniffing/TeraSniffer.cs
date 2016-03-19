@@ -23,9 +23,9 @@ namespace Tera.Sniffing
         private MessageSplitter _messageSplitter;
         private readonly IpSniffer _ipSniffer;
 
-        public TeraSniffer(IEnumerable<Server> servers, bool UseRawSockets=false)
+        public TeraSniffer(ServerDatabase servers, bool UseRawSockets=false)
         {
-            _serversByIp = servers.ToDictionary(x => x.Ip);
+            _serversByIp = servers.GetServersByIp();
             if (UseRawSockets)
             {
                 _ipSniffer = new IpSnifferRawSocketMultipleInterfaces();

@@ -12,6 +12,7 @@ namespace Tera.DamageMeter
         public Player Player { get; private set; }
 
         public string Name { get { return Player.Name; } }
+        public string FullName { get { return Player.FullName; } }
         public PlayerClass Class { get { return Player.Class; } }
 
         public SkillStats Received { get; private set; }

@@ -9,6 +9,7 @@ namespace Tera.DamageMeter
         {
             var placeHolders = new List<KeyValuePair<string, object>>();
             placeHolders.Add(new KeyValuePair<string, object>("Name", playerInfo.Name));
+            placeHolders.Add(new KeyValuePair<string, object>("FullName", playerInfo.FullName));
             placeHolders.Add(new KeyValuePair<string, object>("Class", playerInfo.Class));
 
             placeHolders.Add(new KeyValuePair<string, object>("Crits", playerInfo.Dealt.Crits));

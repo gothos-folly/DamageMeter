@@ -32,6 +32,7 @@ namespace Tera.DamageMeter
         private Settings _settings;
         private GlobalHotKey _pasteStatsHotKey;
         private GlobalHotKey _resetHotKey;
+        private ToolTip _toolTip = new ToolTip();
 
         public DamageMeterForm()
         {
@@ -44,7 +45,7 @@ namespace Tera.DamageMeter
             _settings = Settings.Load();
             Logger.Log("Settings loaded");
             _classIcons = new ClassIcons(_basicTeraData.ResourceDirectory + @"class-icons\", 36);
-
+            _toolTip.ShowAlways = true;
             _hotKeyManager = new HotKeyManager();
             _pasteStatsHotKey = new GlobalHotKey(_hotKeyManager);
             _pasteStatsHotKey.Pressed += PasteStatsMenuItem_Click;
@@ -133,6 +134,7 @@ namespace Tera.DamageMeter
                 playerStatsControl.Top = pos;
                 playerStatsControl.Width = ListPanel.Width;
                 pos += playerStatsControl.Height + 2;
+                _toolTip.SetToolTip(playerStatsControl, playerStats.FullName);
                 playerStatsControl.Invalidate();
             }
 
@@ -201,8 +203,9 @@ namespace Tera.DamageMeter
             Text = string.Format("Damage Meter connected to {0}", server.Name);
             _server = server;
             _teraData = _basicTeraData.DataForRegion(server.Region);
+            _basicTeraData.Servers.Region = server.Region;
             _entityTracker = new EntityTracker(_teraData.NpcDatabase);
-            _playerTracker = new PlayerTracker(_entityTracker);
+            _playerTracker = new PlayerTracker(_entityTracker,_basicTeraData.Servers);
             _damageTracker = new DamageTracker(_settings.OnlyBosses,_settings.IgnoreOneshots);
             _messageFactory = new MessageFactory(_teraData.OpCodeNamer);
 
@@ -219,6 +222,11 @@ namespace Tera.DamageMeter
             {
                 var skillResult = new SkillResult(skillResultMessage, _entityTracker, _playerTracker, _teraData.SkillDatabase);
                 _damageTracker.Update(skillResult);
+            }
+            var sLoginMessage = message as LoginServerMessage;
+            if (sLoginMessage != null) {
+                _server = _basicTeraData.Servers.GetServer(sLoginMessage.ServerId, _server);
+                Text = string.Format("Damage Meter connected to {0}", _server.Name);
             }
         }
 

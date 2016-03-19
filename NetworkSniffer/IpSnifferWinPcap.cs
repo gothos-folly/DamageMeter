@@ -70,7 +70,8 @@ namespace NetworkSniffer
             Debug.Assert(_devices != null);
             foreach (var device in _devices.Where(device => device.Opened))
             {
-                device.StopCapture();
+                try { device.StopCapture();}
+                catch { };//CaptureThread was aborted
                 device.Close();
             }
             _devices = null;
