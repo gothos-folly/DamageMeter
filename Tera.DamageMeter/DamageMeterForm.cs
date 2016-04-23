@@ -203,7 +203,6 @@ namespace Tera.DamageMeter
             Text = string.Format("Damage Meter connected to {0}", server.Name);
             _server = server;
             _teraData = _basicTeraData.DataForRegion(server.Region);
-            _basicTeraData.Servers.Region = server.Region;
             _entityTracker = new EntityTracker(_teraData.NpcDatabase);
             _playerTracker = new PlayerTracker(_entityTracker,_basicTeraData.Servers);
             _damageTracker = new DamageTracker(_settings.OnlyBosses,_settings.IgnoreOneshots);
