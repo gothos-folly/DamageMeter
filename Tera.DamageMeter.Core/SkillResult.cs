@@ -45,12 +45,12 @@ namespace Tera.DamageMeter
             if (sourceUser != null)
             {
                 Skill = skillDatabase.GetOrNull(sourceUser, message.SkillId);
-                SourcePlayer = playerTracker.Get(sourceUser.PlayerId);
+                SourcePlayer = playerTracker.Get(sourceUser.ServerId, sourceUser.PlayerId);
             }
 
             if (targetUser != null)
             {
-                TargetPlayer = playerTracker.Get(targetUser.PlayerId);
+                TargetPlayer = playerTracker.Get(targetUser.ServerId, targetUser.PlayerId);
             }
         }
     }
