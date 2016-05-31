@@ -127,7 +127,7 @@ namespace Tera.Sniffing
                         _serverToClient = connection;
                         _clientToServer = null;
 
-                        _decrypter = new ConnectionDecrypter();
+                        _decrypter = new ConnectionDecrypter(server.Region);
                         _decrypter.ClientToServerDecrypted += HandleClientToServerDecrypted;
                         _decrypter.ServerToClientDecrypted += HandleServerToClientDecrypted;
 
