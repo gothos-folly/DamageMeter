@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -33,6 +34,7 @@ namespace Tera.DamageMeter
         private GlobalHotKey _pasteStatsHotKey;
         private GlobalHotKey _resetHotKey;
         private ToolTip _toolTip = new ToolTip();
+        private bool _needInit;
 
         public DamageMeterForm()
         {
@@ -202,11 +204,8 @@ namespace Tera.DamageMeter
         {
             Text = string.Format("Damage Meter connected to {0}", server.Name);
             _server = server;
-            _teraData = _basicTeraData.DataForRegion(server.Region);
-            _entityTracker = new EntityTracker(_teraData.NpcDatabase);
-            _playerTracker = new PlayerTracker(_entityTracker,_basicTeraData.Servers);
-            _damageTracker = new DamageTracker(_settings.OnlyBosses,_settings.IgnoreOneshots);
-            _messageFactory = new MessageFactory(_teraData.OpCodeNamer);
+            _messageFactory = new MessageFactory();
+            _needInit = true;
 
             Logger.Log(Text);
         }
@@ -214,7 +213,7 @@ namespace Tera.DamageMeter
         private void HandleMessageReceived(Message obj)
         {
             var message = _messageFactory.Create(obj);
-            _entityTracker.Update(message);
+            _entityTracker?.Update(message);
 
             var skillResultMessage = message as EachSkillResultServerMessage;
             if (skillResultMessage != null)
@@ -222,10 +221,30 @@ namespace Tera.DamageMeter
                 var skillResult = new SkillResult(skillResultMessage, _entityTracker, _playerTracker, _teraData.SkillDatabase);
                 _damageTracker.Update(skillResult);
             }
+
+            var cVersion = message as C_CHECK_VERSION;
+            if (cVersion != null)
+            {
+                var opCodeNamer =
+                    new OpCodeNamer(Path.Combine(_basicTeraData.ResourceDirectory,
+                        $"opcodes/{cVersion.Versions[0]}.txt"));
+                _messageFactory = new MessageFactory(opCodeNamer, cVersion.Versions[0]);
+                return;
+            }
+
             var sLoginMessage = message as LoginServerMessage;
             if (sLoginMessage != null) {
-                _server = _basicTeraData.Servers.GetServer(sLoginMessage.ServerId, _server);
-                Text = string.Format("Damage Meter connected to {0}", _server.Name);
+                if (_needInit)
+                {
+                    _server = _basicTeraData.Servers.GetServer(sLoginMessage.ServerId, _server);
+                    Text = string.Format("Damage Meter connected to {0}", _server.Name);
+                    _teraData = _basicTeraData.DataForRegion(_server.Region);
+                    _entityTracker = new EntityTracker(_teraData.NpcDatabase);
+                    _playerTracker = new PlayerTracker(_entityTracker, _basicTeraData.Servers);
+                    _damageTracker = new DamageTracker(_settings.OnlyBosses, _settings.IgnoreOneshots);
+                    _entityTracker.Update(message);
+                    _needInit = false;
+                }
             }
         }
 

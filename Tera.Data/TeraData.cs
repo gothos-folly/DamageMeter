@@ -11,7 +11,7 @@ namespace Tera.Data
     public class TeraData
     {
         public Region Region { get; private set; }
-        public OpCodeNamer OpCodeNamer { get; private set; }
+//        public OpCodeNamer OpCodeNamer { get; private set; }
         public SkillDatabase SkillDatabase { get; private set; }
         public NpcDatabase NpcDatabase { get; private set; }
 
@@ -21,7 +21,7 @@ namespace Tera.Data
             string suffix = (basicData.Language == "Auto") ? (region != "EU") ? region : "EU-EN" : basicData.Language;
             SkillDatabase = new SkillDatabase(basicData.ResourceDirectory, suffix);
             NpcDatabase = new NpcDatabase(basicData.ResourceDirectory, suffix);
-            OpCodeNamer = new OpCodeNamer(Path.Combine(basicData.ResourceDirectory, $"opcodes\\opcodes-{region}.txt"));
+            //OpCodeNamer = new OpCodeNamer(Path.Combine(basicData.ResourceDirectory, $"opcodes\\opcodes-{region}.txt"));
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Tera.Data;
 using Tera.Game;
+using Tera.Game.Messages;
 using Tera.PacketLog;
 using Tera.Sniffing;
 
@@ -22,7 +23,8 @@ namespace Tera.Sniffer
         private TeraData _teraData;
         private long _clientMessages = 0;
         private long _serverMessages = 0;
-
+        private OpCodeNamer _opCodeNamer;
+        private MessageFactory _messageFactory;
         public SnifferForm()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace Tera.Sniffer
 
         private string GetOpcodeName(ushort opCode)
         {
-            return _teraData.OpCodeNamer.GetName(opCode);
+            return _opCodeNamer.GetName(opCode);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,7 +52,8 @@ namespace Tera.Sniffer
                     _logWriter = new PacketLogWriter(string.Format("{0}.TeraLog", DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)), header);
                     ConnectionList.Items.Clear();
                     ConnectionList.Items.Add(string.Format("New connection to {0}started...", server.Name));
-                    _teraData = _basicTeraData.DataForRegion(server.Region);
+                    _messageFactory = new MessageFactory();
+                    _opCodeNamer = new OpCodeNamer(new Dictionary<ushort, string> { { 19900, "C_CHECK_VERSION" } });
                 });
         }
 
@@ -58,6 +61,15 @@ namespace Tera.Sniffer
         {
             InvokeAction(() =>
             {
+                var mes = _messageFactory.Create(message);
+                var cVersion = mes as C_CHECK_VERSION;
+                if (cVersion != null)
+                {
+                    _opCodeNamer =
+                        new OpCodeNamer(Path.Combine(_basicTeraData.ResourceDirectory,
+                            $"opcodes/{cVersion.Versions[0]}.txt"));
+                }
+
                 Write(string.Format("{0} {1}({2}) {3}",
                     message.Direction == MessageDirection.ClientToServer ? ">" : "<",
                     GetOpcodeName(message.OpCode),
