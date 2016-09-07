@@ -228,7 +228,7 @@ namespace Tera.DamageMeter
                 var opCodeNamer =
                     new OpCodeNamer(Path.Combine(_basicTeraData.ResourceDirectory,
                         $"opcodes/{cVersion.Versions[0]}.txt"));
-                _messageFactory = new MessageFactory(opCodeNamer, cVersion.Versions[0]);
+                _messageFactory = new MessageFactory(opCodeNamer, _server.Region);
                 return;
             }
 
@@ -237,6 +237,7 @@ namespace Tera.DamageMeter
                 if (_needInit)
                 {
                     _server = _basicTeraData.Servers.GetServer(sLoginMessage.ServerId, _server);
+                    _messageFactory.Version = _server.Region;
                     Text = string.Format("Damage Meter connected to {0}", _server.Name);
                     _teraData = _basicTeraData.DataForRegion(_server.Region);
                     _entityTracker = new EntityTracker(_teraData.NpcDatabase);
